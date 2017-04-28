@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class CommentsController extends Controller
 {
@@ -27,7 +28,17 @@ class CommentsController extends Controller
      */
     public function create()
     {
-        //
+          $client = new Client;
+    $r = $client->post('http://localhost:3000/users/', 
+                ['json' => [
+                    "name" =>, @name,
+                    "email" => @email,
+                    "password" => @password,
+                    "password" => @password_confirmation
+                ]]);
+    //$uri = "http://localhost:3000/vouchers/1/comentarios"
+    //$response = \Httpful\Request::post($uri)->sendsJson()
+    //->body('<xml><name>Value</name></xml>')
     }
 
     /**

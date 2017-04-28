@@ -16,7 +16,7 @@ class VoucherController extends Controller
     public function index()
     {
         
-        $uri = "http://localhost:3000/users/1/vouchers";
+        $uri = "http://localhost:3000/vouchers";
         $response = \Httpful\Request::get($uri)->send();
         $data = ($response->body);
         //dd(
