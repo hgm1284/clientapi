@@ -1,28 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Home</title>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
- <script type="text/javascript" src="/assets/js/voucher.js"></script>
-</head>
-<body>
-<h1>Consulta de sus Boletas</h1>
-<table class="table table-striped">
-@if($data)
-  <table class="table">
-    <thead>
-      <tr>
-        <td>Número de Boleta</td>
+@extends('layouts.app')
+@section('content')
+<div class="card col-md-8 col-md-offset-2">
+<div class="card">
+    <div class="header">
+        <a href="/vouchers/create">
+            <button class="btn btn-info btn-fill pull-right">Nueva</button>
+        </a>
+        <h4 class="title">Boletas</h4>
+        <p class="category">Boleta</p>
+    </div>
+    <div class="content table-responsive table-full-width">
+        <table class="table table-hover table-striped">
+        @if($data)
+            <thead>
+              <td>Número de Boleta</td>
         <td>Articulo</td>
         <td>Marca</td>
         <td>Modelo</td>
@@ -33,31 +24,33 @@
         <td>Estado</td>
         <td>Reporte</td>
         <td>ID_Usuario</td>
-      </tr>
-    </thead>
-    <tbody>
-@foreach ($data as $row)
-<tr>
-  <td>{{$row->id}}</td>
+                <th>Actions</th>
+            </thead>
+                <tbody>
+              @foreach ($data as $row)
+               <tr>
+               <td>{{$row->id}}</td>
   <td>{{$row->articulo}}</td>
   <td>{{$row->marca}}</td>
   <td>{{$row->modelo}}</td>
   <td>{{$row->color}}</td>
   <td>{{$row->serie}}</td>
   <td>{{$row->adelanto}}</td>
-  <td>{{$row->accesorios}}</td>
+  <td>{{$row->accesorio}}</td>
   <td>{{$row->estado}}</td>
   <td>{{$row->reporte}}</td>
   <td>{{$row->user_id}}</td>
-</tr>
 
-@endforeach
-
-    </tbody>
-  </table>
-  @endif
+                <td class="fixed col-sm-2">
+                  <a href="/vouchers/{{$row->id}}"> <button type="button" class="btn btn-primary btn-xs">Show</button> </a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+     @endif
 </div>
 </div>
+</div>
 
-</body>
-</html>
+@endsection

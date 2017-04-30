@@ -22,7 +22,7 @@
 <h2>Boleta</h2>
 
 <div class ="container col-xs-8">
-@if($data)
+
 <table class="table table-striped">
     <thead>
       <tr>
@@ -40,33 +40,33 @@
       </tr>
     </thead>
     <tbody>
-@foreach ($data as $row)
+
 <tr>
-  <td>{{$row->id}}</td>
-  <td>{{$row->articulo}}</td>
-  <td>{{$row->marca}}</td>
-  <td>{{$row->modelo}}</td>
-  <td>{{$row->color}}</td>
-  <td>{{$row->serie}}</td>
-  <td>{{$row->adelanto}}</td>
-  <td>{{$row->accesorios}}</td>
-  <td>{{$row->estado}}</td>
-  <td>{{$row->reporte}}</td>
-  <td>{{$row->user_id}}</td>
+  <td>{{$voucher->id}}</td>
+  <td>{{$voucher->articulo}}</td>
+  <td>{{$voucher->marca}}</td>
+  <td>{{$voucher->modelo}}</td>
+  <td>{{$voucher->color}}</td>
+  <td>{{$voucher->serie}}</td>
+  <td>{{$voucher->adelanto}}</td>
+  <td>{{$voucher->accesorio}}</td>
+  <td>{{$voucher->estado}}</td>
+  <td>{{$voucher->reporte}}</td>
+  <td>{{$voucher->user_id}}</td>
 </tr>
 
-@endforeach
+
 
     </tbody>
   </table>
-  @endif
+
 </div>
 <hr>
 
 <div class ="container col-xs-8">
 <H1>Consulta de Comentarios</H1>
 
-@if($data2)
+@if($comments)
  <table class="table table-striped">
     <thead>
       <tr>
@@ -77,10 +77,9 @@
       </tr>
     </thead>
     <tbody>
-@foreach ($data2 as $row)
+@foreach ($comments as $row)
 <tr>
   <td>{{$row->id}}</td>
-  <td>{{$row->commenter}}</td>
   <td>{{$row->body}}</td>
   <td>{{$row->voucher_id}}</td>
 </tr>

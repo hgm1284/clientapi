@@ -7,98 +7,99 @@ use GuzzleHttp\Client;
 
 class VoucherController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+/**
+ * Display a listing of the resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+public function index()
+{
+    $client = new Client();
+      
+    $r=$client->request('GET', 'http://localhost:3000/vouchers', [
+            'headers' => [
+            'token'  => '2886b60f3d59469989155a734fbc371b'
+            ]]);
+         $body =$r->getBody();
+        $data = json_decode($body);
+        return view('voucher.index',compact('data'));
+}
 
-              $client = new Client([
-          // Base URI is used with relative requests
-          'base_uri' => 'https://apimaricells.herokuapp.com/'
-          // You can set any number of default request options.
+/**
+ * Show the form for creating a new resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+public function create()
+{
+    //
+}
 
-          ]);
+/**
+ * Store a newly created resource in storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
+public function store(Request $request)
+{
+    //
+}
 
-          $response = $client->get('https://apimaricells.herokuapp.com/vouchers');
+/**
+ * Display the specified resource.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\Response
+ */
+public function show($id)
+{
+    $client = new Client();
+      
+    $r=$client->request('GET', 'http://localhost:3000/vouchers/'.$id, [
+            'headers' => [
+            'token'  => '2886b60f3d59469989155a734fbc371b'
+            ]]);
+         $body =$r->getBody();
+        $data = json_decode($body);
+      
+        $comments=$data->comments;
+        $voucher=$data->voucher;
 
-          dd($response);
+        return view('voucher.show',compact('comments','voucher'));
+}
 
-    }
+/**
+ * Show the form for editing the specified resource.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\Response
+ */
+public function edit($id)
+{
+    //
+}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+/**
+ * Update the specified resource in storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @param  int  $id
+ * @return \Illuminate\Http\Response
+ */
+public function update(Request $request, $id)
+{
+    //
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $uri = "http://localhost:3000/users/1/vouchers/3";
-        $uri2 = "http://localhost:3000/vouchers/1/comentarios/3";
-        $response = \Httpful\Request::get($uri)->send();
-        $response2 = \Httpful\Request::get($uri2)->send();
-        $data = ($response->body);
-        $data2 = ($response2->body);
-
-        //dd($data);
-        return view("voucher.show", compact('data','data2'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+/**
+ * Remove the specified resource from storage.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\Response
+ */
+public function destroy($id)
+{
+    //
+}
 }
