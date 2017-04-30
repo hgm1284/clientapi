@@ -13,6 +13,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+ <script type="text/javascript" src="/assets/js/voucher.js"></script>
 </head>
 <body>
 <h1>Consulta de sus Boletas</h1>

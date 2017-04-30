@@ -25,6 +25,7 @@ class VoucherController extends Controller
           $response = $client->get('https://apimaricells.herokuapp.com/vouchers');
 
           dd($response);
+
     }
 
     /**

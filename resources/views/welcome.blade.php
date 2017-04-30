@@ -10,7 +10,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="/assets/js/voucher.js"></script>
+
+        <title>Home</title>
+
         <!-- Styles -->
         <style>
             html, body {
