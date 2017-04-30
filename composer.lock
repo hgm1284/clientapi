@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+
     "content-hash": "7e0d33f4c87f2996b38fd30e825067da",
     "packages": [
         {
@@ -860,6 +861,8 @@
             "time": "2017-01-23T04:29:33+00:00"
         },
         {
+<<<<<<< HEAD
+=======
             "name": "nategood/httpful",
             "version": "0.2.20",
             "source": {
@@ -910,6 +913,7 @@
             "time": "2015-10-26T16:11:30+00:00"
         },
         {
+>>>>>>> 85a71454a392b87d848abe3856f09b7e5a1f95cf
             "name": "nesbot/carbon",
             "version": "1.22.1",
             "source": {

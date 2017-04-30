@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 
-
 class VoucherController extends Controller
 {
     /**
@@ -15,12 +14,18 @@ class VoucherController extends Controller
      */
     public function index()
     {
-        
-        $uri = "http://localhost:3000/vouchers";
-        $response = \Httpful\Request::get($uri)->send();
-        $data = ($response->body);
-        //dd(
-        return view("voucher.index", compact('data'));
+
+              $client = new Client([
+          // Base URI is used with relative requests
+          'base_uri' => 'https://apimaricells.herokuapp.com/'
+          // You can set any number of default request options.
+
+          ]);
+
+          $response = $client->get('https://apimaricells.herokuapp.com/vouchers');
+
+          dd($response);
+
     }
 
     /**

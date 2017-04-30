@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use Storage;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 
 class AuthController extends Controller
 {
+
       public function mylogin(Request $request)
     {
         
@@ -36,4 +38,5 @@ class AuthController extends Controller
      return view("auth.login");
 
     }
+
 }

@@ -15,17 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('voucher', 'VoucherController');
-
+Route::resource('vouchers', 'VoucherController');
 
 //Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
-Route::get('voucher', 'VoucherController@index');
-
-
-
 
 Route::get('/login', 'AuthController@vista');
 Route::post('/log', 'AuthController@myLogin');
