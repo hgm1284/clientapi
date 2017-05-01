@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Home</title>
-	<meta charset="utf-8"> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<!--<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css') }}"-->
+@extends('layouts.app1')
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+@section('content')
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <script type="text/javascript" src="/assets/js/voucher.js"></script>
-</head>
-<body>
 
 <h1>Consulta de Boleta</h1>
 <h2>Boleta</h2>
@@ -64,24 +49,28 @@
 <hr>
 
 <div class ="container col-xs-8">
+
 <H1>Consulta de Comentarios</H1>
+
 
 @if($comments)
  <table class="table table-striped">
     <thead>
       <tr>
         <td>Número de Boleta</td>
-        <td>Título del Comentario</td>
         <td>Comentario</td>
-        <td>id_Comentario</td>
+        <td>Status</td>
       </tr>
     </thead>
     <tbody>
 @foreach ($comments as $row)
+@if ($row->status)
+
+@endif
 <tr>
-  <td>{{$row->id}}</td>
-  <td>{{$row->body}}</td>
   <td>{{$row->voucher_id}}</td>
+  <td>{{$row->body}}</td>
+  <td>{{$row->status}}</td>
 </tr>
 
 @endforeach
@@ -96,17 +85,21 @@
 <div class ="container col-xs-8">
 <hr>
 <h3>Escribanos su Consulta</h3>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">Título de la Consulta</span>
-  <input type="text" class="form-control" placeholder="Título" aria-describedby="basic-addon1">
+      <form action="/comments" method="POST">
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="voucher_id" value="{{$voucher->id}}">
+           <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="form-group">
+                    <label>Comentario:</label>
+                  
+                 <textarea rows="2" name="body" required="true" class="form-control" >
+                  </textarea>
+                </div>
+                <button type="submit" class="btn btn-info btn-fill pull-right">Enviar</button>
+                <div class="clearfix"></div> 
+            </div>
+        </div>
+    </form>
 </div>
-
-<div class="input-group input-group-lg">
-  <span class="input-group-addon" id="sizing-addon1">Consulta</span>
-  <input type="text" class="form-control" placeholder="Consulta" aria-describedby="sizing-addon1">
-</div>
-<input class="btn btn-default" type="button" value="Enviar">
-</div>
-
-</body>
-</html>
+@endsection

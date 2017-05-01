@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 @section('content')
 <div class="card col-md-8 col-md-offset-2">
 <div class="card">
@@ -43,6 +43,15 @@
 
                 <td class="fixed col-sm-2">
                   <a href="/vouchers/{{$row->id}}"> <button type="button" class="btn btn-primary btn-xs">Show</button> </a>
+                </td>
+                  <td class="fixed col-sm-2">
+                  <a href="/vouchers/{{$row->id}}/edit"> <button type="button" class="btn btn-primary btn-xs">Edit</button> </a>
+
+                     <form action="/vouchers/{{$row->id}}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="btn btn-danger btn-xs">Excluir</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

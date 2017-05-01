@@ -5,6 +5,8 @@ use Storage;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+Use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -19,15 +21,27 @@ class AuthController extends Controller
 
     ]);
 
-    $response = $client->request('POST', 'http://localhost:3000/login', [
+    $response = $client->request('post', 'http://localhost:3000/login', [
     'form_params' => [
         'email' => $request->email,
         'password' => $request->password
        ]
     ]);
-
+      
+        
        if ($response->getReasonPhrase()=='OK') {
-          return redirect('/home');
+        $user=new User();
+        $user->name=$response->getHeaders()['name'][0];
+        $user->email=$request->email;
+        $user->password=$password = bcrypt($request->password);
+        $user->role=$response->getHeaders()['role'][0];
+        $user->token=$response->getHeaders()['token'][0];
+        $user->save();
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // Authentication passed...
+            return redirect()->intended('/home');
+        }
+          
        }
        return back()->withInput();
     }
@@ -37,6 +51,14 @@ class AuthController extends Controller
 
      return view("auth.login");
 
+    }
+    public function logout()
+    {
+
+      $currentuser = User::find(Auth::user()->id);
+      Auth::logout();
+      $currentuser->delete();
+      return redirect('/login');
     }
 
 }

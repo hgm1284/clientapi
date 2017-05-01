@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
-
+use Illuminate\Support\Facades\Auth;
 class CommentsController extends Controller
 {
+    protected $client;
+   
+    public function __construct(Client $client1){
+        $this->client = $client1;
+       
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,17 +35,7 @@ class CommentsController extends Controller
      */
     public function create()
     {
-          $client = new Client;
-    $r = $client->post('http://localhost:3000/users/', 
-                ['json' => [
-                    "name" =>, @name,
-                    "email" => @email,
-                    "password" => @password,
-                    "password" => @password_confirmation
-                ]]);
-    //$uri = "http://localhost:3000/vouchers/1/comentarios"
-    //$response = \Httpful\Request::post($uri)->sendsJson()
-    //->body('<xml><name>Value</name></xml>')
+      return view('comment.create');
     }
 
     /**
@@ -49,7 +46,18 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $response = $this->client->request('POST', 'http://localhost:3000/comments', [
+    'form_params' => [
+        'body' => $request->body,
+        'voucher_id' => $request->voucher_id
+       ],
+       'headers' => [
+            'token'  => Auth::user()->token
+            ]
+    ]);
+     return back()->withInput();
+
     }
 
     /**

@@ -15,11 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('vouchers', 'VoucherController');
 
-//Auth::routes();
-
-Route::get('/home', 'HomeController@index');
 
 Route::get('/login', 'AuthController@vista');
-Route::post('/log', 'AuthController@myLogin');
+
+Route::post('/login', 'AuthController@myLogin');
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+ 	Route::resource('vouchers', 'VoucherController');
+	Route::resource('comments', 'CommentsController');
+	Route::get('/home', 'HomeController@index');
+	Route::post('/logout', 'AuthController@logout');
+    });

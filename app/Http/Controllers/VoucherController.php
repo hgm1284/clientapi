@@ -4,9 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 
 class VoucherController extends Controller
 {
+
+    
+/**
+ * Create a new controller instance.
+ *
+ * @return void
+ */
+  protected $client;
+   
+    public function __construct(Client $client1){
+        $this->client = $client1;
+       
+    }
 /**
  * Display a listing of the resource.
  *
@@ -14,11 +28,11 @@ class VoucherController extends Controller
  */
 public function index()
 {
-    $client = new Client();
+    
       
-    $r=$client->request('GET', 'http://localhost:3000/vouchers', [
+    $r=$this->client->request('GET', 'http://localhost:3000/vouchers', [
             'headers' => [
-            'token'  => '2886b60f3d59469989155a734fbc371b'
+            'token'  => Auth::user()->token
             ]]);
          $body =$r->getBody();
         $data = json_decode($body);
@@ -32,7 +46,13 @@ public function index()
  */
 public function create()
 {
-    //
+     $r=$this->client->request('GET', 'http://localhost:3000/users', [
+            'headers' => [
+            'token'  => Auth::user()->token
+            ]]);
+      $body =$r->getBody();
+        $users = json_decode($body);
+    return view('voucher.create',compact('users'));
 }
 
 /**
@@ -43,7 +63,24 @@ public function create()
  */
 public function store(Request $request)
 {
-    //
+     $response = $this->client->request('POST', 'http://localhost:3000/vouchers', [
+    'form_params' => [
+        'articulo' => $request->articulo,
+        'marca' => $request->marca,
+        'modelo' => $request->modelo,
+        'serie' => $request->serie,
+        'color' => $request->color,
+        'adelanto' => $request->adelanto,
+        'accesorio' => $request->accesorio,
+        'estado' => $request->estado,
+        'reporte' => $request->reporte,
+        'user_id' => $request->user_id
+       ],
+       'headers' => [
+            'token'  => Auth::user()->token
+            ]
+    ]);
+    return redirect('/vouchers');
 }
 
 /**
@@ -58,7 +95,7 @@ public function show($id)
       
     $r=$client->request('GET', 'http://localhost:3000/vouchers/'.$id, [
             'headers' => [
-            'token'  => '2886b60f3d59469989155a734fbc371b'
+            'token'  => Auth::user()->token
             ]]);
          $body =$r->getBody();
         $data = json_decode($body);
@@ -77,7 +114,15 @@ public function show($id)
  */
 public function edit($id)
 {
-    //
+      
+    $r=$this->client->request('GET', 'http://localhost:3000/vouchers/'.$id, [
+            'headers' => [
+            'token'  => Auth::user()->token
+            ]]);
+        $body =$r->getBody();
+        $data = json_decode($body);
+        $voucher=$data->voucher;
+        return view('voucher.edit',compact('voucher'));
 }
 
 /**
@@ -89,7 +134,25 @@ public function edit($id)
  */
 public function update(Request $request, $id)
 {
-    //
+    $response = $this->client->request('PUT', 'http://localhost:3000/vouchers/'.$id, [
+    'form_params' => [
+        'articulo' => $request->articulo,
+        'marca' => $request->marca,
+        'modelo' => $request->modelo,
+        'serie' => $request->serie,
+        'color' => $request->color,
+        'adelanto' => $request->adelanto,
+        'accesorio' => $request->accesorio,
+        'estado' => $request->estado,
+        'reporte' => $request->reporte,
+        'user_id' => $request->user_id
+       ],
+       'headers' => [
+            'token'  => Auth::user()->token
+            ]
+    ]);
+    return redirect('/vouchers');
+
 }
 
 /**
@@ -99,7 +162,14 @@ public function update(Request $request, $id)
  * @return \Illuminate\Http\Response
  */
 public function destroy($id)
-{
-    //
+{  
+
+$this->client->request('DELETE', 'http://localhost:3000/vouchers/'.$id, [
+            'headers' => [
+            'token'  => Auth::user()->token
+            ]]);
+return redirect('/vouchers');
 }
+
+
 }
