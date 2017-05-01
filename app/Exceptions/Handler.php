@@ -43,8 +43,19 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
+    {     
+
+        switch ($exception->getStatusCode()) {
+            case 404:
+
+          return redirect('/login');
+             break;
+            
+            default:
+               return parent::render($request, $exception);
+            break;
+        }
+            return parent::render($request, $exception);
     }
 
     /**
@@ -61,6 +72,6 @@ class Handler extends ExceptionHandler
         }
 
        // return redirect()->guest(route('login'));
-         return redirect('/login');
+            return redirect('/login'); 
     }
 }

@@ -57,9 +57,10 @@
  <table class="table table-striped">
     <thead>
       <tr>
-        <td>Número de Boleta</td>
+       
         <td>Comentario</td>
-        <td>Status</td>
+         <td>Usuario Creador</td>
+        <td>Estado</td>
       </tr>
     </thead>
     <tbody>
@@ -68,9 +69,15 @@
 
 @endif
 <tr>
-  <td>{{$row->voucher_id}}</td>
+  
   <td>{{$row->body}}</td>
-  <td>{{$row->status}}</td>
+  <td>{{$row->voucher_id}}</td>
+  @if($row->status==='True')
+ <td>Público</td>
+  @ else
+  <td>Privado</td>
+  @endif
+ 
 </tr>
 
 @endforeach
@@ -93,7 +100,7 @@
                 <div class="form-group">
                     <label>Comentario:</label>
                   
-                 <textarea rows="2" name="body" required="true" class="form-control" >
+                 <textarea rows="4" name="body" required="true" class="form-control" >
                   </textarea>
                 </div>
                 <button type="submit" class="btn btn-info btn-fill pull-right">Enviar</button>

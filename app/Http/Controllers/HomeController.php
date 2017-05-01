@@ -3,17 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
-{
+{   
+
+     protected $client;
+
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        //$this->middleware('auth');
+    
+     public function __construct(Client $client1){
+        $this->client = $client1;
+       
     }
 
     /**
@@ -24,5 +31,20 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    /**
+     * show the details of the current user
+     */
+    public function chargeProfile()
+    {
+        
+      
+    $r=$this->client->request('GET', 'http://localhost:3000/users/'.Auth::user()->id_user, [
+            'headers' => [
+            'token'  => Auth::user()->token
+            ]]);
+         $body =$r->getBody();
+        $data = json_decode($body);
+        return view('user.show',compact('data'));
     }
 }

@@ -36,6 +36,7 @@ class AuthController extends Controller
         $user->password=$password = bcrypt($request->password);
         $user->role=$response->getHeaders()['role'][0];
         $user->token=$response->getHeaders()['token'][0];
+        $user->id_user=$response->getHeaders()['id'][0];
         $user->save();
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Authentication passed...

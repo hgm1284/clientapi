@@ -26,4 +26,5 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 	Route::resource('comments', 'CommentsController');
 	Route::get('/home', 'HomeController@index');
 	Route::post('/logout', 'AuthController@logout');
+	Route::get('/me', 'HomeController@chargeProfile');
     });

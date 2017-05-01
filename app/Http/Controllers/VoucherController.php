@@ -102,7 +102,6 @@ public function show($id)
       
         $comments=$data->comments;
         $voucher=$data->voucher;
-
         return view('voucher.show',compact('comments','voucher'));
 }
 
