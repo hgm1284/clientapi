@@ -30,7 +30,7 @@ public function index()
 {
     
       
-    $r=$this->client->request('GET', 'http://localhost:3000/vouchers', [
+    $r=$this->client->request('GET', config('global.url').'vouchers', [
             'headers' => [
             'token'  => Auth::user()->token
             ]]);
@@ -46,7 +46,7 @@ public function index()
  */
 public function create()
 {
-     $r=$this->client->request('GET', 'http://localhost:3000/users', [
+     $r=$this->client->request('GET', config('global.url').'users', [
             'headers' => [
             'token'  => Auth::user()->token
             ]]);
@@ -63,7 +63,7 @@ public function create()
  */
 public function store(Request $request)
 {
-     $response = $this->client->request('POST', 'http://localhost:3000/vouchers', [
+     $response = $this->client->request('POST', config('global.url').'vouchers', [
     'form_params' => [
         'articulo' => $request->articulo,
         'marca' => $request->marca,
@@ -93,7 +93,7 @@ public function show($id)
 {
     $client = new Client();
       
-    $r=$client->request('GET', 'http://localhost:3000/vouchers/'.$id, [
+    $r=$client->request('GET', config('global.url').'vouchers/'.$id, [
             'headers' => [
             'token'  => Auth::user()->token
             ]]);
@@ -114,7 +114,7 @@ public function show($id)
 public function edit($id)
 {
       
-    $r=$this->client->request('GET', 'http://localhost:3000/vouchers/'.$id, [
+    $r=$this->client->request('GET', config('global.url').'vouchers/'.$id, [
             'headers' => [
             'token'  => Auth::user()->token
             ]]);
@@ -133,7 +133,7 @@ public function edit($id)
  */
 public function update(Request $request, $id)
 {
-    $response = $this->client->request('PUT', 'http://localhost:3000/vouchers/'.$id, [
+    $response = $this->client->request('PUT', config('global.url').'vouchers/'.$id, [
     'form_params' => [
         'articulo' => $request->articulo,
         'marca' => $request->marca,
@@ -163,7 +163,7 @@ public function update(Request $request, $id)
 public function destroy($id)
 {  
 
-$this->client->request('DELETE', 'http://localhost:3000/vouchers/'.$id, [
+$this->client->request('DELETE', config('global.url').'vouchers/'.$id, [
             'headers' => [
             'token'  => Auth::user()->token
             ]]);

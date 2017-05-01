@@ -21,7 +21,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $uri = "http://localhost:3000/users/1/vouchers";
+        $uri = config('global.url')."users/1/vouchers";
         $response = \Httpful\Request::get($uri)->send();
         $data = ($response->body);
         //dd(
@@ -47,7 +47,7 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
        
-        $response = $this->client->request('POST', 'http://localhost:3000/comments', [
+        $response = $this->client->request('POST', config('global.url').'comments', [
     'form_params' => [
         'body' => $request->body,
         'voucher_id' => $request->voucher_id

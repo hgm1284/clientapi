@@ -13,6 +13,7 @@ class AuthController extends Controller
 
       public function mylogin(Request $request)
     {
+      
         
         $client = new Client([
     // Base URI is used with relative requests
@@ -21,7 +22,7 @@ class AuthController extends Controller
 
     ]);
 
-    $response = $client->request('post', 'http://localhost:3000/login', [
+    $response = $client->request('post', config('global.url')."login", [
     'form_params' => [
         'email' => $request->email,
         'password' => $request->password
