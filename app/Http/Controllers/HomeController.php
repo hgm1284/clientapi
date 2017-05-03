@@ -44,7 +44,7 @@ class HomeController extends Controller
             'token'  => Auth::user()->token
             ]]);
          $body =$r->getBody();
-        $data = json_decode($body);
+         $data = json_decode($body);
         return view('user.show',compact('data'));
     }
 }

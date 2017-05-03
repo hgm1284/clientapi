@@ -45,16 +45,16 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {     
 
-        switch ($exception->getStatusCode()) {
-            case 404:
+        // switch ($exception->getStatusCode()) {
+        //     case 404:
 
-          return redirect('/login');
-             break;
+        //   return redirect('/login');
+        //      break;
             
-            default:
-               return parent::render($request, $exception);
-            break;
-        }
+        //     default:
+        //        return parent::render($request, $exception);
+        //     break;
+        // }
             return parent::render($request, $exception);
     }
 

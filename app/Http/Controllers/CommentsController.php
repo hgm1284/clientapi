@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Auth;
 class CommentsController extends Controller
 {
     protected $client;
-   
+
+   /**
+    * Constructor para inicializar la variable.
+    */
     public function __construct(Client $client1){
         $this->client = $client1;
        
@@ -21,15 +24,11 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $uri = config('global.url')."users/1/vouchers";
-        $response = \Httpful\Request::get($uri)->send();
-        $data = ($response->body);
-        //dd(
-        return view("voucher.index", compact('data'));
+        
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource -vista-. 
      *
      * @return \Illuminate\Http\Response
      */
@@ -48,12 +47,12 @@ class CommentsController extends Controller
     {
        
         $response = $this->client->request('POST', config('global.url').'comments', [
-    'form_params' => [
+        'form_params' => [
         'body' => $request->body,
         'voucher_id' => $request->voucher_id
        ],
-       'headers' => [
-            'token'  => Auth::user()->token
+        'headers' => [
+        'token'  => Auth::user()->token
             ]
     ]);
      return back()->withInput();

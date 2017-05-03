@@ -21,10 +21,13 @@ Route::get('/login', 'AuthController@vista');
 
 Route::post('/login', 'AuthController@myLogin');
 
-Route::group(['middleware' => ['web', 'auth']], function () {
+Route::group(['middleware' => ['web', 'auth']], function () { #Reglas, tiene que estar logeado.
  	Route::resource('vouchers', 'VoucherController');
 	Route::resource('comments', 'CommentsController');
 	Route::get('/home', 'HomeController@index');
 	Route::post('/logout', 'AuthController@logout');
 	Route::get('/me', 'HomeController@chargeProfile');
+
+	Route::get('/register', 'RegisterController@vista');
+    Route::post('/myregister', 'RegisterController@myRegister');
     });
