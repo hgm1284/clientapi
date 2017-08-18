@@ -3,9 +3,6 @@
 @section('content')
 
 <div class="row">
-  <div class="col-md-2">
-    
-  </div>
   <div class="col-md-8">
 <div class="panel panel-default">
   <!-- Default panel contents -->
@@ -28,18 +25,10 @@
   </div>
   <br>
 
-    <div class="input-group input-group-lg">
-  <span class="input-group-addon" id="sizing-addon1">Registrado desde :</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1" value="" readonly=true>
-  </div>
-
-
 </div>
 
-  </div>
-  <button type="button" class="btn btn-primary">Regresar</button>
-</div>
-<div class="col-md-2">
+   <a href="/users" class="btn btn-info btn-fill pull-right"></i>Regresar</a>
+
   
 </div>
 

@@ -1,7 +1,8 @@
 @extends('layouts.app1')
 @section('content')
    
-
+<div class="row">
+  <div class="col-md-8">
             <?php $perfil = Auth::user(); ?>
           @if ($perfil->role === 'Admin')
         <a href="/vouchers/create">
@@ -9,8 +10,7 @@
         </a>
         @endif
         <h4 class="title">Boletas</h4>
-      
-    </div>
+
     <div class="content table-responsive table-full-width">
         <table class="table table-hover table-striped">
         @if($data)
@@ -64,6 +64,12 @@
     </table>
      @endif
 
+
+<a href="/home">
+            <button class="btn btn-info btn-fill pull-right">Regresar</button>
+        </a>
+        </div>
+        </div>
 
 
 

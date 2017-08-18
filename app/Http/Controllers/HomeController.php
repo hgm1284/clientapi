@@ -47,4 +47,5 @@ class HomeController extends Controller
          $data = json_decode($body);
         return view('user.show',compact('data'));
     }
+
 }

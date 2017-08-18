@@ -27,7 +27,8 @@ Route::group(['middleware' => ['web', 'auth']], function () { #Reglas, tiene que
 	Route::get('/home', 'HomeController@index');
 	Route::post('/logout', 'AuthController@logout');
 	Route::get('/me', 'HomeController@chargeProfile');
-
+	Route::resource('users', 'UserController');
+     
 	Route::get('/register', 'RegisterController@vista');
     Route::post('/myregister', 'RegisterController@myRegister');
     });

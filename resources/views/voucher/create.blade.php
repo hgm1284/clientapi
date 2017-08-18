@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="card col-md-8 col-md-offset-2">
+ <a href="/vouchers" class="btn btn-info btn-fill pull-right"></i>Regresar</a>
+
 	<div class="header">
 		<h4 class="title">Boleta</h4>
 		<p class="category">Crear nueva Boleta:</p>

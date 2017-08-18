@@ -15,6 +15,12 @@ class RegisterController extends Controller
        
     }
 
+    public function index()
+    {
+        
+    }
+
+
      public function myregister (Request $request)
     {
         
@@ -37,7 +43,13 @@ class RegisterController extends Controller
     public function vista()
     {
 
-     return view("auth.register");
+      $response=$this->client->request('GET', config('global.url').'users', [
+            'headers' => [
+            'token'  => Auth::user()->token
+            ]]);
+         $body =$response->getBody();
+        $data = json_decode($body);
+        return view('auth.register',compact('data'));
 
     }
 }

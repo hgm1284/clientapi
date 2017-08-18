@@ -32,7 +32,7 @@
           <li>
             <?php $perfil = Auth::user(); ?>
           @if ($perfil->role === 'Admin')
-          <a href="/register"><i class="pe-7s-users"></i><p>Usuarios</p></a>
+          <a href="/users"><i class="pe-7s-users"></i><p>Usuarios</p></a>
           @endif
             <a href="/me"><i class="pe-7s-id"></i><p>Perfíl</p></a>
             <a href="/vouchers"><i class="pe-7s-note2"></i><p>Boletas</p></a>

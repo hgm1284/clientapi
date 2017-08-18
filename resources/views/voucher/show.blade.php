@@ -7,6 +7,8 @@
 <h2>Boleta</h2>
 
 <div class ="container col-xs-8">
+<a href="/vouchers" class="btn btn-info btn-fill pull-right"></i>Regresar</a>
+
 
 <table class="table table-striped">
     <thead>
@@ -21,7 +23,7 @@
         <td>Accesorios</td>
         <td>Estado</td>
         <td>Reporte</td>
-        <td>ID_Usuario</td>
+        <td>ID_Cliente</td>
       </tr>
     </thead>
     <tbody>
@@ -59,8 +61,8 @@
       <tr>
        
         <td>Comentario</td>
-         <td>Usuario Creador</td>
-        <td>Estado</td>
+         <td>Número de Boleta</td>
+        <td>Usuario</td>
       </tr>
     </thead>
     <tbody>
@@ -72,6 +74,8 @@
   
   <td>{{$row->body}}</td>
   <td>{{$row->voucher_id}}</td>
+  <td>{{$row->user_id}}</td>
+
   @if($row->status==='True')
  <td>Público</td>
   @ else
