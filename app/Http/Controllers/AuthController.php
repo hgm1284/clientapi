@@ -17,7 +17,7 @@ class AuthController extends Controller
         
         $client = new Client([
     // Base URI is used with relative requests
-        'base_uri' => 'https://apimaricells.herokuapp.com/'
+        'base_uri' => 'https://sheltered-island-32705.herokuapp.com/'
     // You can set any number of default request options.
 
     ]);
@@ -29,7 +29,7 @@ class AuthController extends Controller
        ]
     ]);
       
-       #Si pasa guarsa un usuario temporal para guardarlo en laravel. Crea un usuario temporal.
+       #Si pasa guarda un usuario temporal para guardarlo en laravel. Crea un usuario temporal.
        if ($response->getReasonPhrase()=='OK') {
         $user=new User();
         $user->name=$response->getHeaders()['name'][0];

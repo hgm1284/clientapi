@@ -26,7 +26,7 @@
         <td>Estado</td>
         <td>Reporte</td>
         <td>ID_Usuario</td>
-                <th>Acciones</th>
+                <td>Acciones</td>
             </thead>
                 <tbody>
               @foreach ($data as $row)
