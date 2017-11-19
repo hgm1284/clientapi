@@ -14,7 +14,6 @@
     <thead>
       <tr>
         <td>Número de Boleta</td>
-        <td>Articulo</td>
         <td>Marca</td>
         <td>Modelo</td>
         <td>Color</td>
@@ -30,15 +29,14 @@
 
 <tr>
   <td>{{$voucher->id}}</td>
-  <td>{{$voucher->articulo}}</td>
-  <td>{{$voucher->marca}}</td>
-  <td>{{$voucher->modelo}}</td>
+  <td>{{$voucher->brand}}</td>
+  <td>{{$voucher->model}}</td>
   <td>{{$voucher->color}}</td>
   <td>{{$voucher->serie}}</td>
-  <td>{{$voucher->adelanto}}</td>
-  <td>{{$voucher->accesorio}}</td>
-  <td>{{$voucher->estado}}</td>
-  <td>{{$voucher->reporte}}</td>
+  <td>{{$voucher->money}}</td>
+  <td>{{$voucher->accesories}}</td>
+  <td>{{$voucher->status}}</td>
+  <td>{{$voucher->report}}</td>
   <td>{{$voucher->user_id}}</td>
 </tr>
 
@@ -59,7 +57,7 @@
  <table class="table table-striped">
     <thead>
       <tr>
-       
+
         <td>Comentario</td>
          <td>Número de Boleta</td>
         <td>Usuario</td>
@@ -71,7 +69,7 @@
 
 @endif
 <tr>
-  
+
   <td>{{$row->body}}</td>
   <td>{{$row->voucher_id}}</td>
   <td>{{$row->user_id}}</td>
@@ -81,7 +79,7 @@
   @ else
   <td>Privado</td>
   @endif
- 
+
 </tr>
 
 @endforeach
@@ -103,12 +101,12 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="form-group">
                     <label>Comentario:</label>
-                  
+
                  <textarea rows="4" name="body" required="true" class="form-control" >
                   </textarea>
                 </div>
                 <button type="submit" class="btn btn-info btn-fill pull-right">Enviar</button>
-                <div class="clearfix"></div> 
+                <div class="clearfix"></div>
             </div>
         </div>
     </form>

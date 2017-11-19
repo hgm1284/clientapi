@@ -29,12 +29,12 @@ class AuthController extends Controller
   #Si pasa guarda un usuario temporal para guardarlo en laravel. Crea un usuario temporal.
   if ($response->getReasonPhrase()=='OK') {
     $user=new User();
-    $user->name=$response->getHeaders()['name'][0];
+    $user->name=$response->getHeaders()['Name'][0];
     $user->email=$request->email;
     $user->password=$password = bcrypt($request->password);
-    $user->role=$response->getHeaders()['role'][0];
-    $user->token=$response->getHeaders()['token'][0];
-    $user->id_user=$response->getHeaders()['id'][0];
+    $user->role=$response->getHeaders()['Role'][0];
+    $user->token=$response->getHeaders()['Token'][0];
+    $user->id_user=$response->getHeaders()['Id'][0];
     $user->save(); #usuario temporal guardado.
     if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
       // Authentication passed...

@@ -19,7 +19,7 @@ protected $client;
 
 public function __construct(Client $client1){
     $this->client = $client1;
-   
+
 }
 /**
 * Display a listing of the resource.
@@ -29,8 +29,8 @@ public function __construct(Client $client1){
 public function index()
 {
 
-  
-$r=$this->client->request('GET', config('global.url').'vouchers', [
+
+$r=$this->client->request('GET', config('global.url').'bills', [
         'headers' => [
         'token'  => Auth::user()->token
         ]]);
@@ -63,17 +63,16 @@ return view('voucher.create',compact('users'));
 */
 public function store(Request $request)
 {
- $response = $this->client->request('POST', config('global.url').'vouchers', [
+ $response = $this->client->request('POST', config('global.url').'bills', [
 'form_params' => [
-    'articulo' => $request->articulo,
-    'marca' => $request->marca,
-    'modelo' => $request->modelo,
+    'brand' => $request->brand,
+    'model' => $request->model,
     'serie' => $request->serie,
     'color' => $request->color,
-    'adelanto' => $request->adelanto,
-    'accesorio' => $request->accesorio,
-    'estado' => $request->estado,
-    'reporte' => $request->reporte,
+    'money' => $request->money,
+    'accesories' => $request->accesories,
+    'status' => $request->status,
+    'report' => $request->report,
     'user_id' => $request->user_id
    ],
    'headers' => [
@@ -92,14 +91,14 @@ return redirect('/vouchers');
 public function show($id)
 {
 $client = new Client();
-  
-$r=$client->request('GET', config('global.url').'vouchers/'.$id, [
+
+$r=$client->request('GET', config('global.url').'bill/'.$id, [
         'headers' => [
         'token'  => Auth::user()->token
         ]]);
      $body =$r->getBody();
     $data = json_decode($body);
-  
+
     $comments=$data->comments;
     $voucher=$data->voucher;
     return view('voucher.show',compact('comments','voucher'));
@@ -113,8 +112,8 @@ $r=$client->request('GET', config('global.url').'vouchers/'.$id, [
 */
 public function edit($id)
 {
-  
-$r=$this->client->request('GET', config('global.url').'vouchers/'.$id, [
+
+$r=$this->client->request('GET', config('global.url').'bill/'.$id, [
         'headers' => [
         'token'  => Auth::user()->token
         ]]);
@@ -133,7 +132,7 @@ $r=$this->client->request('GET', config('global.url').'vouchers/'.$id, [
 */
 public function update(Request $request, $id)
 {
-$response = $this->client->request('PUT', config('global.url').'vouchers/'.$id, [
+$response = $this->client->request('PUT', config('global.url').'bill/'.$id, [
 'form_params' => [
     'articulo' => $request->articulo,
     'marca' => $request->marca,
@@ -161,9 +160,9 @@ return redirect('/vouchers');
 * @return \Illuminate\Http\Response
 */
 public function destroy($id)
-{  
+{
 
-$this->client->request('DELETE', config('global.url').'vouchers/'.$id, [
+$this->client->request('DELETE', config('global.url').'bill/'.$id, [
         'headers' => [
         'token'  => Auth::user()->token
         ]]);

@@ -1,6 +1,6 @@
 @extends('layouts.app1')
 @section('content')
-   
+
 <div class="row">
   <div class="col-md-8">
             <?php $perfil = Auth::user(); ?>
@@ -15,7 +15,7 @@
         <table class="table table-hover table-striped">
         @if($data)
             <thead>
-            
+
         <td>Articulo</td>
         <td>Marca</td>
         <td>Modelo</td>
@@ -31,16 +31,15 @@
                 <tbody>
               @foreach ($data as $row)
                <tr>
-              
-  <td>{{$row->articulo}}</td>
-  <td>{{$row->marca}}</td>
-  <td>{{$row->modelo}}</td>
+
+  <td>{{$row->brand}}</td>
+  <td>{{$row->model}}</td>
   <td>{{$row->color}}</td>
   <td>{{$row->serie}}</td>
-  <td>{{$row->adelanto}}</td>
-  <td>{{$row->accesorio}}</td>
-  <td>{{$row->estado}}</td>
-  <td>{{$row->reporte}}</td>
+  <td>{{$row->money}}</td>
+  <td>{{$row->accesories}}</td>
+  <td>{{$row->status}}</td>
+  <td>{{$row->report}}</td>
   <td>{{$row->user_id}}</td>
 
                 <td class="fixed col-sm-2">

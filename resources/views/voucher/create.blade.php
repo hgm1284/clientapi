@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card col-md-8 col-md-offset-2">
- <a href="/vouchers" class="btn btn-info btn-fill pull-right"></i>Regresar</a>
+
 
 	<div class="header">
 		<h4 class="title">Boleta</h4>
@@ -15,16 +15,16 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="form-group">
                     <label>Nombre del Artículo:</label>
-                    <input type="text" class="form-control" name="articulo" placeholder="articulo"  required="required">
+                    <input type="text" class="form-control" name="article" placeholder="articulo"  required="required">
                 </div>
-                
+
                 <div class="form-group">
                     <label>Marca:</label>
-                    <input type="text" class="form-control" name="marca" placeholder="marca" required="required">
+                    <input type="text" class="form-control" name="brand" placeholder="marca" required="required">
                 </div>
                   <div class="form-group">
                     <label>modelo:</label>
-                    <input type="text" class="form-control" name="modelo" placeholder="modelo" required="required">
+                    <input type="text" class="form-control" name="model" placeholder="modelo" required="required">
                 </div>
                   <div class="form-group">
                     <label>Serie:</label>
@@ -36,19 +36,19 @@
                 </div>
                   <div class="form-group">
                     <label>Adelanto:</label>
-                    <input type="text" class="form-control" name="adelanto" placeholder="adelanto"  required="required">
+                    <input type="text" class="form-control" name="money" placeholder="adelanto"  required="required">
                 </div>
                   <div class="form-group">
                     <label>Accesorios:</label>
-                    <input type="text" class="form-control" name="accesorio" placeholder="accesorios"  required="required">
+                    <input type="text" class="form-control" name="accesories" placeholder="accesorios"  required="required">
                 </div>
                   <div class="form-group">
                     <label>Estado:</label>
-                    <input type="text" class="form-control" name="estado" placeholder="estado"  required="required">
+                    <input type="text" class="form-control" name="status" placeholder="estado"  required="required">
                 </div>
                   <div class="form-group">
                     <label>Reporte:</label>
-                    <input type="text" class="form-control" name="reporte" placeholder="reporte"  required="required">
+                    <input type="text" class="form-control" name="report" placeholder="reporte"  required="required">
                 </div>
 
                     <div class="form-group">
@@ -61,7 +61,8 @@
                 </div>
 
                 <button type="submit" class="btn btn-info btn-fill pull-right">Guardar</button>
-                <div class="clearfix"></div> 
+                 <a href="/vouchers" class="btn btn-info btn-fill pull-right"></i>Regresar</a>
+                <div class="clearfix"></div>
             </div>
         </div>
     </form>
