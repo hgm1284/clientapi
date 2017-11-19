@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
-{   
+{
 
      protected $client;
 
@@ -17,10 +17,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    
+
      public function __construct(Client $client1){
         $this->client = $client1;
-       
+
     }
 
     /**
@@ -37,7 +37,6 @@ class HomeController extends Controller
      */
     public function chargeProfile()
     {
-        
       
     $r=$this->client->request('GET', 'http://localhost:3000/users/'.Auth::user()->id_user, [
             'headers' => [

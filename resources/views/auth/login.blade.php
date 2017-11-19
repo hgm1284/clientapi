@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        
+
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
@@ -55,8 +55,8 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="/">
-                                    Forgot Your Password?
+                                <a class="btn btn-link" href="/register">
+                                    Register
                                 </a>
                             </div>
                         </div>

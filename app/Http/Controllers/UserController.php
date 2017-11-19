@@ -17,7 +17,7 @@ class UserController extends Controller
 
  public function __construct(Client $client1){
     $this->client = $client1;
-   
+
 }
 
 public function index()
@@ -50,7 +50,7 @@ public function create()
 public function store(Request $request)
 {
     $response = $this->client->request('POST', config('global.url').'users', [
-'form_params' => [
+    'form_params' => [
     'name' => $request->name,
     'email' => $request->email,
     'password' => $request->password,
@@ -71,16 +71,16 @@ return redirect('/users');    }
 public function show($id)
 {
     $client = new Client();
-  
+
 $response=$client->request('GET', config('global.url').'users/'.$id, [
         'headers' => [
         'token'  => Auth::user()->token
         ]]);
      $body =$response->getBody();
     $data = json_decode($body);
-  
+
     return view('user.show',compact('data'));
-}    
+}
 
 /**
  * Show the form for editing the specified resource.
@@ -135,6 +135,6 @@ public function destroy($id)
         'headers' => [
         'token'  => Auth::user()->token
         ]]);
-return redirect('/users');   
+return redirect('/users');
 }
 }
