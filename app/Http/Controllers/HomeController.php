@@ -37,8 +37,8 @@ class HomeController extends Controller
      */
     public function chargeProfile()
     {
-      
-    $r=$this->client->request('GET', 'http://localhost:3000/users/'.Auth::user()->id_user, [
+
+    $r=$this->client->request('GET', config('global.url').'users/'.Auth::user()->id_user, [
             'headers' => [
             'token'  => Auth::user()->token
             ]]);

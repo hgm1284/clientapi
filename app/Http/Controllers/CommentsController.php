@@ -14,7 +14,7 @@ class CommentsController extends Controller
     */
     public function __construct(Client $client1){
         $this->client = $client1;
-       
+
     }
 
     /**
@@ -24,11 +24,11 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
-     * Show the form for creating a new resource -vista-. 
+     * Show the form for creating a new resource -vista-.
      *
      * @return \Illuminate\Http\Response
      */
@@ -45,16 +45,17 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-       
+      
         $response = $this->client->request('POST', config('global.url').'comments', [
         'form_params' => [
         'body' => $request->body,
-        'voucher_id' => $request->voucher_id
+        'bill_id' => $request->bill_id
        ],
         'headers' => [
         'token'  => Auth::user()->token
             ]
     ]);
+
      return back()->withInput();
 
     }

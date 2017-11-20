@@ -71,7 +71,7 @@
 <tr>
 
   <td>{{$row->body}}</td>
-  <td>{{$row->voucher_id}}</td>
+  <td>{{$row->bill_id}}</td>
   <td>{{$row->user_id}}</td>
 
   @if($row->status==='True')
@@ -96,7 +96,7 @@
 <h3>Escribanos su Consulta</h3>
       <form action="/comments" method="POST">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
-      <input type="hidden" name="voucher_id" value="{{$voucher->id}}">
+      <input type="hidden" name="bill_id" value="{{$voucher->id}}">
            <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="form-group">

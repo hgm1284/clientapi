@@ -92,7 +92,7 @@ public function show($id)
 {
 $client = new Client();
 
-$r=$client->request('GET', config('global.url').'bill/'.$id, [
+$r=$client->request('GET', config('global.url').'bills/'.$id, [
         'headers' => [
         'token'  => Auth::user()->token
         ]]);
@@ -100,7 +100,7 @@ $r=$client->request('GET', config('global.url').'bill/'.$id, [
     $data = json_decode($body);
 
     $comments=$data->comments;
-    $voucher=$data->voucher;
+    $voucher=$data->bill;
     return view('voucher.show',compact('comments','voucher'));
 }
 
@@ -113,13 +113,13 @@ $r=$client->request('GET', config('global.url').'bill/'.$id, [
 public function edit($id)
 {
 
-$r=$this->client->request('GET', config('global.url').'bill/'.$id, [
+$r=$this->client->request('GET', config('global.url').'bills/'.$id, [
         'headers' => [
         'token'  => Auth::user()->token
         ]]);
     $body =$r->getBody();
     $data = json_decode($body);
-    $voucher=$data->voucher;
+    $voucher=$data->bill;
     return view('voucher.edit',compact('voucher'));
 }
 
@@ -132,17 +132,16 @@ $r=$this->client->request('GET', config('global.url').'bill/'.$id, [
 */
 public function update(Request $request, $id)
 {
-$response = $this->client->request('PUT', config('global.url').'bill/'.$id, [
+$response = $this->client->request('PUT', config('global.url').'bills/'.$id, [
 'form_params' => [
-    'articulo' => $request->articulo,
-    'marca' => $request->marca,
-    'modelo' => $request->modelo,
+    'brand' => $request->brand,
+    'model' => $request->model,
     'serie' => $request->serie,
     'color' => $request->color,
-    'adelanto' => $request->adelanto,
-    'accesorio' => $request->accesorio,
-    'estado' => $request->estado,
-    'reporte' => $request->reporte,
+    'money' => $request->money,
+    'accesories' => $request->accesories,
+    'status' => $request->status,
+    'report' => $request->report,
     'user_id' => $request->user_id
    ],
    'headers' => [
@@ -162,7 +161,7 @@ return redirect('/vouchers');
 public function destroy($id)
 {
 
-$this->client->request('DELETE', config('global.url').'bill/'.$id, [
+$this->client->request('DELETE', config('global.url').'bills/'.$id, [
         'headers' => [
         'token'  => Auth::user()->token
         ]]);
