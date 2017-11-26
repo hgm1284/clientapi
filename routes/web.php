@@ -22,6 +22,8 @@ Route::get('/login', 'AuthController@vista');
 Route::post('/login', 'AuthController@myLogin');
 Route::get('/register', 'RegisterController@vista');
 Route::post('/myregister', 'RegisterController@myRegister');
+Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
+Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
 Route::group(['middleware' => ['web', 'auth']], function () { #Reglas, tiene que estar logeado.
  	Route::resource('vouchers', 'VoucherController');

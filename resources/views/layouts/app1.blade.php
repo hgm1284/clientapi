@@ -24,10 +24,13 @@
   <div class="sidebar" data-color="azure" data-image="/assets/img/sidebar.jpg">
     <div class="sidebar-wrapper">
       <div class="logo">
-        <a href="{{ url('/home') }}" class="simple-text">Maricells</a>
+        <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" class="img-responsive img-thumbnail">
+
+
       </div>
+
       <ul class="nav">
-      
+
 
         <li>
           <?php $perfil = Auth::user(); ?>
@@ -36,9 +39,9 @@
         @endif
           <a href="/me"><i class="pe-7s-id"></i><p>Perfíl</p></a>
           <a href="/vouchers"><i class="pe-7s-note2"></i><p>Boletas</p></a>
-          
+
         </li>
-    
+
       </ul>
 
     </div>
@@ -67,7 +70,7 @@
                                           {{ csrf_field() }}
                                       </form>
                                   </li>
-           
+
           </ul>
         </div>
       </div>
