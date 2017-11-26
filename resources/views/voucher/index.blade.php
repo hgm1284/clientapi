@@ -16,7 +16,6 @@
         @if($data)
             <thead>
 
-        <td>Articulo</td>
         <td>Marca</td>
         <td>Modelo</td>
         <td>Color</td>
