@@ -35,12 +35,6 @@ class RegisterController extends Controller
 
     public function vista()
     {
-      // $response=$this->client->request('GET', config('global.url').'users', [
-      //       'headers' => [
-      //       'token'  => Auth::user()->token
-      //       ]]);
-      //    $body =$response->getBody();
-      //   $data = json_decode($body);
         return view('auth.register');
 
     }

@@ -8,18 +8,18 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+  protected $client;//client to connect api
+
+
+ public function __construct(Client $client){
+    $this->client = $client;
+}
 /**
  * Display a listing of the resource.
  *
  * @return \Illuminate\Http\Response
  */
-  protected $client;
-
- public function __construct(Client $client1){
-    $this->client = $client1;
-
-}
-
 public function index()
 {
       $response=$this->client->request('GET', config('global.url').'users', [
@@ -60,7 +60,8 @@ public function store(Request $request)
         'token'  => Auth::user()->token
         ]
 ]);
-return redirect('/users');    }
+return redirect('/users');
+ }
 
 /**
  * Display the specified resource.
