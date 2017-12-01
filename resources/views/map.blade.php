@@ -19,6 +19,7 @@
 <link href="/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 @yield('css')
 </head>
+
 <body id="app-layout">
 <div class="wrapper">
   <div class="sidebar" data-color="azure" data-image="/assets/img/sidebar.jpg">
@@ -41,6 +42,8 @@
           <a href="/vouchers"><i class="pe-7s-note2"></i><p>Boletas</p></a>
           <a href="/map"><i class="pe-7s-note2"></i><p>Mapas</p></a>
 
+          
+
         </li>
 
       </ul>
@@ -57,7 +60,99 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+           <style>
+    #map {
+      height: 700px;
+      width: 140%;
+     }
+  </style>
+  <h3>Puedes ver la ubicación de servicios de talleres más cercanos</h3>
+  <div id="map"></div>
+  <script>
+    function initMap() {
+      var marycells = {lat: 10.324514, lng: -84.431971};
+      var jaime = {lat: 10.327087, lng: -84.430203};
+      var quincho = {lat: 10.329783, lng: -84.419337};
+      var celfix = {lat: 10.324974, lng: -84.431485};
+
+      var contentString = '<div id="content">'+
+'<div id="siteNotice">'+
+'</div>'+
+'<h1 id="firstHeading" class="firstHeading">Celulares Mary Cells</h1>' +
+'<div id="bodyContent">'+
+'<p><b>Mary Cells</b>, es una tienda especializada en la venta y reparación de celulares. ' +
+' La experiencia se ha logrado gracias a la calidad y la originalidad que se ofrece en cada producto que los clientes adquieren... '+
+' Se realizan reparaciones de celulares y tablets de las marcas: Nokia, Samsung Galaxy, Sony Xperia, Alcatel, Blu, Apple, LG. ' +
+' Servicio de reparaciones en 1 hora o 24 horas. ' +
+' Repuestos Originales y de Calidad Original. ' +
+' Lunes a Viernes de 8:30am a 6:00pm y sábados de 9am a 5pm. ' +
+' Teléfonos: 2461-1452 y 2461-4130. ' +
+'</p>' +
+'</div>' +
+'</div>';
+
+  var contentString2 = '<div id="content">'+
+'<div id="siteNotice">'+
+'</div>'+
+'<h1 id="firstHeading" class="firstHeading">Euro Taller Quincho San Carlos</h1>' +
+'<div id="bodyContent">'+
+'<p><b>Taller Quincho</b>, Taller especializado en multiservios. Miembro de la mayor red de talleres del mundo. ' +
+' Ofrecemos los servicios de mécanica general, mantenimiento preventido, garantías y mantenimientos de agencia. '+
+' Direccíón: 200 metros oeste de la Dos Pinos, Ciudad Quesada, San Carlos. ' +
+' Teléfonos: 2461-0923. ' +
+' Repuestos Originales y de Calidad Original. ' +
+' Correo Eléctronica: eurotallerquinchocq@gmail.com. ' +
+'</p>' +
+'</div>' +
+'</div>';
+
+var infowindow = new google.maps.InfoWindow({
+content: contentString
+});
+
+var infowindow2 = new google.maps.InfoWindow({
+content: contentString2
+});
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: marycells
+      });
+
+      var markerMary = new google.maps.Marker({
+        position: marycells,
+        map: map
+      });
+
+      markerMary.addListener('click', function() {
+      infowindow.open(map, markerMary);
+      });
+
+      var markerJaime = new google.maps.Marker({
+        position: jaime,
+        map: map
+      });
+
+       var markerQuincho = new google.maps.Marker({
+        position: quincho,
+        map: map
+      });
+
+      markerQuincho.addListener('click', function() {
+      infowindow2.open(map, markerQuincho);
+      });
+
+       var markerCelfix = new google.maps.Marker({
+        position: celfix,
+        map: map
+      });
+    }
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbZEsqGYD3S-eUK1AYX6IZflmetF7AfiI&callback=initMap">
+  </script>
         </div>
+
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -85,6 +180,8 @@
         </div>
       </div>
     </div>
+
+    
 
     <footer class="footer">
       <div class="container-fluid">

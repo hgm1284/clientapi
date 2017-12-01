@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+return view('welcome');
 });
 
 
@@ -26,10 +26,11 @@ Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->n
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
 Route::group(['middleware' => ['web', 'auth']], function () { #Reglas, tiene que estar logeado.
- 	Route::resource('vouchers', 'VoucherController');
-	Route::resource('comments', 'CommentsController');
-	Route::get('/home', 'HomeController@index');
-	Route::post('/logout', 'AuthController@logout');
-	Route::get('/me', 'HomeController@chargeProfile');
-	Route::resource('users', 'UserController');
-  });
+Route::resource('vouchers', 'VoucherController');
+Route::resource('comments', 'CommentsController');
+Route::get('/home', 'HomeController@index');
+Route::get('/map', 'MapsController@index');
+Route::post('/logout', 'AuthController@logout');
+Route::get('/me', 'HomeController@chargeProfile');
+Route::resource('users', 'UserController');
+});
