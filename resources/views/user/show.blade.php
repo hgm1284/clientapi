@@ -27,9 +27,9 @@
 
 </div>
 
-   <a href="/users" class="btn btn-info btn-fill pull-right"></i>Regresar</a>
+   <a href="/home" class="btn btn-info btn-fill pull-right"></i>Regresar</a>
 
-  
+
 </div>
 
 @endsection

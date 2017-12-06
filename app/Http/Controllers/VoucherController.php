@@ -29,7 +29,6 @@ public function __construct(Client $client1){
 public function index()
 {
 
-
 $r=$this->client->request('GET', config('global.url').'bills', [
         'headers' => [
         'token'  => Auth::user()->token
