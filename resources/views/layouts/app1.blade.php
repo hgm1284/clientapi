@@ -25,13 +25,9 @@
     <div class="sidebar-wrapper">
       <div class="logo">
         <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" class="img-responsive img-thumbnail">
-
-
       </div>
 
       <ul class="nav">
-
-
         <li>
           <?php $perfil = Auth::user(); ?>
         @if ($perfil->role === 'Admin')
@@ -39,14 +35,13 @@
         @endif
           <a href="/me"><i class="pe-7s-id"></i><p>Perfíl</p></a>
           <a href="/vouchers"><i class="pe-7s-note2"></i><p>Boletas</p></a>
-          <a href="/map"><i class="pe-7s-note2"></i><p>Mapas</p></a>
-
+          <a href="/map"><i class="pe-7s-map-2"></i><p>Mapas</p></a>
+          <a href="/assets/Proyecto_Harvey.pdf"><i class="pe-7s-cloud-download"></i>Descargar Documento</a>
         </li>
-
       </ul>
-
     </div>
   </div>
+
   <div class="main-panel">
     <nav class="navbar navbar-default navbar-fixed">
       <div class="container-fluid">
@@ -71,11 +66,11 @@
                                           {{ csrf_field() }}
                                       </form>
                                   </li>
-
           </ul>
         </div>
       </div>
     </nav>
+    
     <div class="content">
       <div class="container-fluid">
         <div class="row">

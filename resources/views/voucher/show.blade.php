@@ -9,7 +9,6 @@
 <div class ="container col-xs-8">
 <a href="/vouchers" class="btn btn-info btn-fill pull-right"></i>Regresar</a>
 
-
 <table class="table table-striped">
     <thead>
       <tr>
@@ -39,25 +38,18 @@
   <td>{{$voucher->report}}</td>
   <td>{{$voucher->user_id}}</td>
 </tr>
-
-
-
     </tbody>
   </table>
-
 </div>
 <hr>
 
 <div class ="container col-xs-8">
-
 <H1>Consulta de Comentarios</H1>
-
 
 @if($comments)
  <table class="table table-striped">
     <thead>
       <tr>
-
         <td>Comentario</td>
          <td>Número de Boleta</td>
         <td>Usuario</td>
@@ -66,30 +58,23 @@
     <tbody>
 @foreach ($comments as $row)
 @if ($row->status)
-
 @endif
 <tr>
-
   <td>{{$row->body}}</td>
   <td>{{$row->bill_id}}</td>
   <td>{{$row->user_id}}</td>
-
   @if($row->status==='True')
  <td>Público</td>
   @ else
   <td>Privado</td>
   @endif
-
 </tr>
-
 @endforeach
-
     </tbody>
   </table>
   @endif
 </div>
 </div>
-
 
 <div class ="container col-xs-8">
 <hr>
@@ -101,7 +86,6 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="form-group">
                     <label>Comentario:</label>
-
                  <textarea rows="4" name="body" required="true" class="form-control" >
                   </textarea>
                 </div>
