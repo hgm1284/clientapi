@@ -24,11 +24,11 @@
       <td>Accesorios</td>
       <td>Estado</td>
       <td>Reporte</td>
-      <td>ID_Usuario</td>
+      <td>Cliente</td>
               <td>Acciones</td>
           </thead>
               <tbody>
-            @foreach ($data as $row)
+            @foreach ($data->bills as $row)
              <tr>
 
 <td>{{$row->brand}}</td>
@@ -39,7 +39,13 @@
 <td>{{$row->accesories}}</td>
 <td>{{$row->status}}</td>
 <td>{{$row->report}}</td>
-<td>{{$row->user_id}}</td>
+<td>
+@foreach ($data->user as $user)
+@if ($row->user_id === $user->id)
+{{$user->name}}
+@endif
+@endforeach
+</td>
 
               <td class="fixed col-sm-2">
                 <a href="/vouchers/{{$row->id}}"> <button type="button" class="btn btn-primary btn-xs">Ver</button> </a>

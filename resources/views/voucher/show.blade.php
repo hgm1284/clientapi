@@ -21,7 +21,7 @@
         <td>Accesorios</td>
         <td>Estado</td>
         <td>Reporte</td>
-        <td>ID_Cliente</td>
+        <td>Cliente</td>
       </tr>
     </thead>
     <tbody>
@@ -36,7 +36,7 @@
   <td>{{$voucher->accesories}}</td>
   <td>{{$voucher->status}}</td>
   <td>{{$voucher->report}}</td>
-  <td>{{$voucher->user_id}}</td>
+  <td>{{$username}}</td>
 </tr>
     </tbody>
   </table>
@@ -62,11 +62,10 @@
 <tr>
   <td>{{$row->body}}</td>
   <td>{{$row->bill_id}}</td>
-  <td>{{$row->user_id}}</td>
-  @if($row->status==='True')
- <td>Público</td>
-  @ else
-  <td>Privado</td>
+  @if($row->status==0)
+ <td>Admin</td>
+  @else
+  <td>Cliente</td>
   @endif
 </tr>
 @endforeach
@@ -86,7 +85,7 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="form-group">
                     <label>Comentario:</label>
-                 <textarea rows="4" name="body" required="true" class="form-control" >
+                 <textarea  name="body" required="true" class="form-control" >
                   </textarea>
                 </div>
                 <button type="submit" class="btn btn-info btn-fill pull-right">Enviar</button>

@@ -54,13 +54,11 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-            
+
                                 <a class="btn btn-primary" href="{{ route('social.auth', 'facebook') }}">
                                     Facebook
                                 </a>
-                                <a class="btn btn-link" href="/register">
-                                    Register
-                                </a>
+                          
                             </div>
                         </div>
                     </form>

@@ -24,12 +24,9 @@ class RegisterController extends Controller
         'email' => $request->email,
         'role' => $request->role,
         'password' => $request->password
-        ],
-        'headers' => [
-        'token'  => Auth::user()->token
-            ]
+        ]
     ]);
-    return redirect('/home');
+    return redirect('/users');
 
     }
 

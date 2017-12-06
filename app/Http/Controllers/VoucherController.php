@@ -97,10 +97,11 @@ $r=$client->request('GET', config('global.url').'bills/'.$id, [
         ]]);
      $body =$r->getBody();
     $data = json_decode($body);
-
     $comments=$data->comments;
     $voucher=$data->bill;
-    return view('voucher.show',compact('comments','voucher'));
+    $username=$data->user;
+    
+    return view('voucher.show',compact('comments','voucher','username'));
 }
 
 /**

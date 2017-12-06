@@ -18,10 +18,7 @@ return view('welcome');
 
 
 Route::get('/login', 'AuthController@vista');
-
 Route::post('/login', 'AuthController@myLogin');
-Route::get('/register', 'RegisterController@vista');
-Route::post('/myregister', 'RegisterController@myRegister');
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
@@ -33,4 +30,6 @@ Route::get('/map', 'MapsController@index');
 Route::post('/logout', 'AuthController@logout');
 Route::get('/me', 'HomeController@chargeProfile');
 Route::resource('users', 'UserController');
+Route::get('/register', 'RegisterController@vista');
+Route::post('/myregister', 'RegisterController@myRegister');
 });

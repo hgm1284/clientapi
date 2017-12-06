@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
 @section('content')
 <div class="container">
@@ -71,12 +71,7 @@
                 <a href="/users">
                   <button type="button" class="btn btn-primary">Regresar</button>
                 </a>
-                <a class="btn btn-block btn-social btn-twitter">
-                   <span class="fa fa-twitter"></span> Sign in with Twitter
-                 </a>
-                 <a class="btn btn-block btn-social btn-facebook">
-                    <span class="fa fa-facebook"></span> Sign in with Facebook
-                  </a>
+
 
               </div>
 
